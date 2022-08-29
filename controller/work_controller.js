@@ -1,5 +1,5 @@
-import multer from 'multer';
 import * as workRepository from '../data/work_data.js';
+import { upload } from '../middleware/upload.js';
 
 export async function getWorks(req, res) {
   const username = req.query.username;
@@ -20,25 +20,16 @@ export async function createWork(req, res) {
   res.status(201).json(work);
 }
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'uploads/');
-  },
-  filename: (req, file, cb) => {
-    cb(null, `${Date.now()}_${file.originalname}`);
-  },
-});
-
-const upload = multer({ storage: storage }).single('file');
-
 export async function uploadImage(req, res) {
   upload(req, res, (err) => {
     if (err) {
-      return res.json({ success: false, err });
+      return res
+        .status(400)
+        .json({ message: `Image upload failed: ${req.file.originalname}` });
     }
-    return res.json({
-      filePath: res.req.file.path,
-      fileName: res.req.file.filename,
+    return res.status(200).json({
+      filePath: req.file.path,
+      fileName: req.file.filename,
     });
   });
 }
