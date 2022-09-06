@@ -41,7 +41,6 @@ const INCLUDE_USER = {
     'image',
     'createdAt',
     'userId',
-    [Sequelize.col('user.name'), 'name'],
     [Sequelize.col('user.username'), 'username'],
     [Sequelize.col('user.url'), 'url'],
   ],

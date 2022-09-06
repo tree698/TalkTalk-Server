@@ -21,7 +21,6 @@ const validateCredential = [
 
 const validateSignup = [
   ...validateCredential,
-  body('name').trim().notEmpty().withMessage('name is missing'),
   body('email').trim().isEmail().normalizeEmail().withMessage('invalid email'),
   body('url')
     .trim()
