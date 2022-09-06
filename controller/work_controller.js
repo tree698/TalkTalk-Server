@@ -10,7 +10,7 @@ export async function getWorks(req, res) {
 }
 export async function createWork(req, res) {
   const { title, description, brush, image } = req.body;
-  const work = await workRepository.create33(
+  const work = await workRepository.create(
     title,
     description,
     brush,
@@ -36,11 +36,11 @@ export async function uploadImage(req, res) {
 
 export async function deleteWork(req, res) {
   const { id } = req.params;
-  const work = await workRepository.getById(id);
-  if (!work) {
+  const data = await workRepository.getById(id);
+  if (!data) {
     return res.status(404).json({ message: `Image not found: ${id}` });
   }
-  if (work.userId !== req.userId) {
+  if (data.userId !== req.userId) {
     return res.sendStatus(403);
   }
   await workRepository.remove(id);

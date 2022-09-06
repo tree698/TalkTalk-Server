@@ -1,7 +1,6 @@
 import SQ from 'sequelize';
 import { sequelize } from '../db/database.js';
 import { User } from './auth_data.js';
-import { create } from './tweet_data.js';
 
 const DataTypes = SQ.DataTypes;
 const Sequelize = SQ.Sequelize;
@@ -76,12 +75,12 @@ export async function getById(id) {
   });
 }
 
-export async function create33(title, description, brush, image, userId) {
+export async function create(title, description, brush, image, userId) {
   return Work.create({ title, description, brush, image, userId }) //
     .then((data) => this.getById(data.dataValues.id));
 }
 
 export async function remove(id) {
   return Work.findByPk(id) //
-    .then((work) => work.destroy());
+    .then((data) => data.destroy());
 }

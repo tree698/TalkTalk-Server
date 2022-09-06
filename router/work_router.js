@@ -2,7 +2,6 @@ import express from 'express';
 import 'express-async-errors';
 import * as workController from '../controller/work_controller.js';
 import { isAuth } from '../middleware/auth_middleware.js';
-import { upload } from '../middleware/upload.js';
 
 const router = express.Router();
 
