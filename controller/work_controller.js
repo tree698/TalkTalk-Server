@@ -1,6 +1,11 @@
 import * as workRepository from '../data/work_data.js';
 import { upload } from '../middleware/upload.js';
 
+export async function showWorks(req, res) {
+  const data = await workRepository.getAll();
+  res.status(200).json(data);
+}
+
 export async function getWorks(req, res) {
   const username = req.query.username;
   const data = await (username
@@ -8,6 +13,7 @@ export async function getWorks(req, res) {
     : workRepository.getAll());
   res.status(200).json(data);
 }
+
 export async function createWork(req, res) {
   const { title, description, brush, image } = req.body;
   const work = await workRepository.create(
