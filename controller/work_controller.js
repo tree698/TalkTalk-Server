@@ -1,10 +1,10 @@
 import * as workRepository from '../data/work_data.js';
 import { upload } from '../middleware/upload.js';
 
-export async function showWorks(req, res) {
-  const data = await workRepository.getAll();
-  res.status(200).json(data);
-}
+// export async function showWorks(req, res) {
+//   const data = await workRepository.getAll();
+//   res.status(200).json(data);
+// }
 
 export async function getWorks(req, res) {
   const username = req.query.username;
@@ -29,13 +29,11 @@ export async function createWork(req, res) {
 export async function uploadImage(req, res) {
   upload(req, res, (err) => {
     if (err) {
-      return res
-        .status(400)
-        .json({ message: `Image upload failed: ${req.file.originalname}` });
+      return res.status(400).json({ message: 'Image upload failed' });
     }
     return res.status(200).json({
-      filePath: req.file.path,
-      fileName: req.file.filename,
+      filePath: res.req.file.path,
+      fileName: res.req.file.filename,
     });
   });
 }

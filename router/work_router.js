@@ -5,7 +5,7 @@ import { isAuth } from '../middleware/auth_middleware.js';
 
 const router = express.Router();
 
-router.get('/', workController.showWorks);
+// router.get('/', workController.showWorks);
 router.get('/', isAuth, workController.getWorks);
 router.post('/', isAuth, workController.createWork);
 router.post('/image', isAuth, workController.uploadImage);
