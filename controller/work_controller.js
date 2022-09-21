@@ -29,7 +29,7 @@ export async function createWork(req, res) {
 export async function uploadImage(req, res) {
   upload(req, res, (err) => {
     if (err) {
-      return res.status(400).json({ message: 'Image upload failed' });
+      return res.status(400).json({ message: 'Image upload failed', err });
     }
     return res.status(200).json({
       filePath: res.req.file.path,
