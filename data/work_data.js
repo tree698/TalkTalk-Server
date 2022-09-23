@@ -13,7 +13,7 @@ const Work = sequelize.define('work', {
     primaryKey: true,
   },
   title: {
-    type: DataTypes.STRING(128),
+    type: DataTypes.STRING(256),
     allowNull: false,
   },
   description: {
@@ -21,11 +21,15 @@ const Work = sequelize.define('work', {
     allowNull: false,
   },
   brush: {
-    type: DataTypes.STRING(128),
+    type: DataTypes.STRING(256),
     allowNull: false,
   },
-  image: {
-    type: DataTypes.TEXT,
+  filePath: {
+    type: DataTypes.STRING(256),
+    allowNull: false,
+  },
+  fileName: {
+    type: DataTypes.STRING(256),
     allowNull: false,
   },
 });
@@ -37,7 +41,8 @@ const INCLUDE_USER = {
     'title',
     'description',
     'brush',
-    'image',
+    'filePath',
+    'fileName',
     'createdAt',
     'userId',
     [Sequelize.col('user.username'), 'username'],
@@ -75,8 +80,15 @@ export async function getById(id) {
   });
 }
 
-export async function create(title, description, brush, image, userId) {
-  return Work.create({ title, description, brush, image, userId }) //
+export async function create(
+  title,
+  description,
+  brush,
+  filePath,
+  fileName,
+  userId
+) {
+  return Work.create({ title, description, brush, filePath, fileName, userId }) //
     .then((data) => this.getById(data.dataValues.id));
 }
 
