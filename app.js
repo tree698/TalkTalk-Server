@@ -12,8 +12,11 @@ import { sequelize } from './db/database.js';
 const app = express();
 
 app.use(express.json());
-// app.use(express.urlencoded({ extended: false }));
-app.use(helmet());
+app.use(
+  helmet({
+    crossOriginResourcePolicy: false,
+  })
+);
 app.use(cors());
 app.use(morgan('tiny'));
 
