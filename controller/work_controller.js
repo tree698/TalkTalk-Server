@@ -15,12 +15,13 @@ export async function getWorks(req, res) {
 }
 
 export async function createWork(req, res) {
-  const { title, description, brush, image } = req.body;
+  const { title, description, brush, originalName, fileName } = req.body;
   const work = await workRepository.create(
     title,
     description,
     brush,
-    image,
+    originalName,
+    fileName,
     req.userId
   );
   res.status(201).json(work);
@@ -34,6 +35,7 @@ export async function uploadImage(req, res) {
     return res.status(200).json({
       filePath: res.req.file.path,
       fileName: res.req.file.filename,
+      originalName: res.req.file.originalname,
     });
   });
 }
