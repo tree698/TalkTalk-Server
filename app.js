@@ -12,6 +12,7 @@ import { sequelize } from './db/database.js';
 const app = express();
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(
   helmet({
     crossOriginResourcePolicy: false,
@@ -20,6 +21,7 @@ app.use(
 app.use(cors());
 app.use(morgan('tiny'));
 
+app.use(express.static('public'));
 app.use('/auth', authRouter);
 app.use('/tweets', tweetsRouter);
 app.use('/work', workRouter);
