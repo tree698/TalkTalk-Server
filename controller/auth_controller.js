@@ -5,7 +5,7 @@ import * as userRepository from '../data/auth_data.js';
 import { config } from '../config.js';
 
 export async function signup(req, res) {
-  const { username, password, email, url } = req.body;
+  const { username, password, email, photo } = req.body;
   const found = await userRepository.findByUsername(username);
   if (found) {
     return res
@@ -17,7 +17,7 @@ export async function signup(req, res) {
     username,
     password: hashed,
     email,
-    url,
+    photo,
   });
   const token = createJwtToken(userId);
   res.status(201).json({ token, username });
@@ -53,4 +53,17 @@ export async function me(req, res) {
     return res.status(404).json({ message: 'User not found' });
   }
   res.status(200).json({ token: req.token, username: user.username });
+}
+
+export async function deleteUser(req, res) {
+  const { id } = req.params;
+  const user = await userRepository.findById(id);
+  if (!user) {
+    return res.status(404).json({ message: `Usesr not found: ${id}` });
+  }
+  // if (user.userId !== req.userId) {
+  //   return res.sendStatus(403);
+  // }
+  await userRepository.remove(id);
+  res.sendStatus(204);
 }

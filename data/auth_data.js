@@ -23,7 +23,9 @@ export const User = sequelize.define(
       type: DataTypes.STRING(45),
       allowNull: false,
     },
-    url: DataTypes.TEXT,
+    photo: {
+      type: DataTypes.STRING(128),
+    },
   },
   { timestamps: false }
 );
@@ -38,4 +40,9 @@ export async function findById(id) {
 
 export async function createUser(user) {
   return User.create(user).then((data) => data.dataValues.id);
+}
+
+export async function remove(id) {
+  return User.findByPk(id) //
+    .then((user) => user.destroy());
 }

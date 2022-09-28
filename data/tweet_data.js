@@ -26,7 +26,7 @@ const INCLUDE_USER = {
     'createdAt',
     'userId',
     [Sequelize.col('user.username'), 'username'],
-    [Sequelize.col('user.url'), 'url'],
+    [Sequelize.col('user.photo'), 'photo'],
   ],
   include: {
     model: User,
