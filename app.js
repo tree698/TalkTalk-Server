@@ -8,6 +8,7 @@ import tweetsRouter from './router/tweet_router.js';
 import workRouter from './router/work_router.js';
 import { config } from './config.js';
 import { sequelize } from './db/database.js';
+import { initSocket } from './connection/socket.js';
 
 const app = express();
 
@@ -35,7 +36,7 @@ app.use((error, req, res, next) => {
   res.sendStatus(500);
 });
 
-// ToDo: socket.io 연결
 sequelize.sync().then(() => {
-  app.listen(config.host.port);
+  const server = app.listen(config.host.port);
+  initSocket(server);
 });
