@@ -58,14 +58,21 @@ const ORDER_DESC = {
   order: [['createdAt', 'DESC']],
 };
 
-export async function getAll() {
-  return Work.findAll({ ...INCLUDE_USER, ...ORDER_DESC });
-}
-
-export async function getAllByUsername(username) {
+export async function getAll(limitInt, offsetInt) {
   return Work.findAll({
     ...INCLUDE_USER,
     ...ORDER_DESC,
+    limit: limitInt,
+    offset: offsetInt,
+  });
+}
+
+export async function getAllByUsername(username, limitInt, offsetInt) {
+  return Work.findAll({
+    ...INCLUDE_USER,
+    ...ORDER_DESC,
+    limit: limitInt,
+    offset: offsetInt,
     include: {
       ...INCLUDE_USER.include,
       where: { username },

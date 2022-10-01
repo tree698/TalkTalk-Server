@@ -7,10 +7,12 @@ import { upload } from '../middleware/upload.js';
 // }
 
 export async function getWorks(req, res) {
-  const username = req.query.username;
+  const { limit, offset, username } = req.query;
+  const limitInt = parseInt(limit);
+  const offsetInt = parseInt(offset);
   const data = await (username
-    ? workRepository.getAllByUsername(username)
-    : workRepository.getAll());
+    ? workRepository.getAllByUsername(username, limitInt, offsetInt)
+    : workRepository.getAll(limitInt, offsetInt));
   res.status(200).json(data);
 }
 
