@@ -1,10 +1,13 @@
 import * as workRepository from '../data/work_data.js';
 import { upload } from '../middleware/upload.js';
 
-// export async function showWorks(req, res) {
-//   const data = await workRepository.getAll();
-//   res.status(200).json(data);
-// }
+export async function showWorks(req, res) {
+  const { limit, offset } = req.query;
+  const limitInt = parseInt(limit);
+  const offsetInt = parseInt(offset);
+  const data = await workRepository.getAll(limitInt, offsetInt);
+  res.status(200).json(data);
+}
 
 export async function getWorks(req, res) {
   const { limit, offset, username } = req.query;
