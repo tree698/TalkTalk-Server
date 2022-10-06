@@ -5,8 +5,9 @@ import { isAuth } from '../middleware/auth_middleware.js';
 
 const router = express.Router();
 
-router.get('/carousel', workController.showWorks);
 router.get('/', isAuth, workController.getWorks);
+router.get('/carousel', workController.showWorks);
+router.get('/search', workController.searchWorks);
 router.post('/', isAuth, workController.createWork);
 router.post('/image', isAuth, workController.uploadImage);
 router.delete('/:id', isAuth, workController.deleteWork);

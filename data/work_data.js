@@ -80,6 +80,18 @@ export async function getAllByUsername(username, limitInt, offsetInt) {
   });
 }
 
+export async function getAllBySearch(searchTerm) {
+  return Work.findAll({
+    ...INCLUDE_USER,
+    ...ORDER_DESC,
+    where: {
+      title: {
+        [SQ.Op.like]: `%${searchTerm}%`,
+      },
+    },
+  });
+}
+
 export async function getById(id) {
   return Work.findOne({
     where: { id },
