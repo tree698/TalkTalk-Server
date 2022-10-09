@@ -20,8 +20,14 @@ export async function showWorks(req, res) {
 }
 
 export async function searchWorks(req, res) {
-  const { searchTerm } = req.query;
-  const data = await workRepository.getAllBySearch(searchTerm);
+  const { limit, offset, searchTerm } = req.query;
+  const limitInt = parseInt(limit);
+  const offsetInt = parseInt(offset);
+  const data = await workRepository.getAllBySearch(
+    limitInt,
+    offsetInt,
+    searchTerm
+  );
   res.status(200).json(data);
 }
 
