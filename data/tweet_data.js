@@ -16,6 +16,10 @@ const Tweet = sequelize.define('tweet', {
     type: DataTypes.TEXT,
     allowNull: false,
   },
+  workId: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
 });
 Tweet.belongsTo(User);
 
@@ -23,6 +27,7 @@ const INCLUDE_USER = {
   attributes: [
     'id',
     'text',
+    'workId',
     'createdAt',
     'userId',
     [Sequelize.col('user.username'), 'username'],
@@ -38,14 +43,15 @@ const ORDER_DESC = {
   order: [['createdAt', 'DESC']],
 };
 
-export async function getAll() {
-  return Tweet.findAll({ ...INCLUDE_USER, ...ORDER_DESC });
+export async function getAll(workId) {
+  return Tweet.findAll({ ...INCLUDE_USER, ...ORDER_DESC, where: { workId } });
 }
 
-export async function getAllByUsername(username) {
+export async function getAllByUsername(username, workId) {
   return Tweet.findAll({
     ...INCLUDE_USER,
     ...ORDER_DESC,
+    where: { workId },
     include: {
       ...INCLUDE_USER.include,
       where: { username },
@@ -60,8 +66,8 @@ export async function getById(id) {
   });
 }
 
-export async function create(text, userId) {
-  return Tweet.create({ text, userId }) //
+export async function create(text, userId, workId) {
+  return Tweet.create({ text, userId, workId }) //
     .then((data) => this.getById(data.dataValues.id));
 }
 
