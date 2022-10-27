@@ -9,7 +9,7 @@ router.get('/', isAuth, workController.getWorks);
 router.get('/carousel', workController.showWorks);
 router.get('/search', workController.searchWorks);
 router.post('/', isAuth, workController.createWork);
-router.post('/image', isAuth, workController.uploadImage);
+router.post('/image', workController.uploadImage);
 router.delete('/:id', isAuth, workController.deleteWork);
 
 export default router;
