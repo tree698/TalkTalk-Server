@@ -19,8 +19,10 @@ export async function signup(req, res) {
     email,
     photo,
   });
-  const token = createJwtToken(userId);
-  res.status(201).json({ token, username });
+  // signup 후 자동 로그인 방지
+  // const token = createJwtToken(userId);
+  // res.status(201).json({ token, username });
+  res.status(201).json({ username });
 }
 
 export async function login(req, res) {
