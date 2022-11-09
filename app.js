@@ -3,6 +3,7 @@ import 'express-async-errors';
 import helmet from 'helmet';
 import cors from 'cors';
 import morgan from 'morgan';
+import cookieParser from 'cookie-parser';
 import authRouter from './router/auth_router.js';
 import tweetsRouter from './router/tweet_router.js';
 import workRouter from './router/work_router.js';
@@ -12,14 +13,23 @@ import { initSocket } from './connection/socket.js';
 
 const app = express();
 
+const corsOption = {
+  // 특정 URL만 허용할 경우...
+  origin: config.cors.allowedOrigin,
+  optionsSuccessStatus: 200,
+  // allow the Access-Control-Allow-Credentials
+  credentials: true,
+};
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 app.use(
   helmet({
     crossOriginResourcePolicy: false,
   })
 );
-app.use(cors());
+app.use(cors(corsOption));
 app.use(morgan('tiny'));
 
 app.use(express.static('public'));

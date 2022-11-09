@@ -26,4 +26,8 @@ export const config = {
     database: required('DB_DATABASE'),
     password: required('DB_PASSWORD'),
   },
+  // 특정 URL을 key값으로 추가할 경우...
+  cors: {
+    allowedOrigin: required('CORS_ALLOW_ORIGIN'),
+  },
 };
