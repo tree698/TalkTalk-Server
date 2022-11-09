@@ -40,7 +40,7 @@ const INCLUDE_USER = {
 };
 
 const ORDER_DESC = {
-  order: [['createdAt', 'DESC']],
+  order: [['createdAt', 'ASC']],
 };
 
 export async function getAll(workId) {
