@@ -6,12 +6,14 @@ class Socket {
   constructor(server) {
     this.io = new Server(server, {
       cors: {
-        origin: '*',
+        origin: config.cors.allowedOrigin,
       },
     });
 
     this.io.use((socket, next) => {
       const token = socket.handshake.auth.token;
+      console.log(token);
+
       if (!token) {
         return next(new Error('Authentication error'));
       }
