@@ -10,20 +10,20 @@ class Socket {
       },
     });
 
-    this.io.use((socket, next) => {
-      const token = socket.handshake.auth.token;
-      console.log(token);
+    // this.io.use((socket, next) => {
+    //   const token = socket.handshake.auth.token;
+    //   console.log(token);
 
-      if (!token) {
-        return next(new Error('Authentication error'));
-      }
-      jwt.verify(token, config.jwt.secretKey, (error, decoded) => {
-        if (error) {
-          return next(new Error('Authentication error'));
-        }
-        next();
-      });
-    });
+    //   if (!token) {
+    //     return next(new Error('Authentication error'));
+    //   }
+    //   jwt.verify(token, config.jwt.secretKey, (error, decoded) => {
+    //     if (error) {
+    //       return next(new Error('Authentication error'));
+    //     }
+    //     next();
+    //   });
+    // });
 
     this.io.on('connection', (socket) => {
       console.log('Socket client connected');
