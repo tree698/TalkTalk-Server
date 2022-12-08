@@ -12,14 +12,14 @@ export async function signup(req, res) {
       .status(409)
       .json({ message: `${username} already exists. Try again!` });
   }
+  const hashed = await bcrypt.hash(password, config.bcrypt.saltRounds);
+  const userId = await userRepository.createUser({
+    username,
+    password: hashed,
+    email,
+    photo,
+  });
   // signup 후 자동 로그인 방지
-  // const hashed = await bcrypt.hash(password, config.bcrypt.saltRounds);
-  // const userId = await userRepository.createUser({
-  //   username,
-  //   password: hashed,
-  //   email,
-  //   photo,
-  // });
   // const token = createJwtToken(userId);
   // res.status(201).json({ token, username });
   res.status(201).json({ username });
