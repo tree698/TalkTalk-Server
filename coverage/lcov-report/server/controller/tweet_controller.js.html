@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">71.42% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/31</span>
+                <span class='fraction'>25/35</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>4/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">71.42% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/31</span>
+                <span class='fraction'>25/35</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -94,7 +94,33 @@
 <a name='L29'></a><a href='#L29'>29</a>
 <a name='L30'></a><a href='#L30'>30</a>
 <a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -105,57 +131,43 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >import { getSocketIO } from '../connection/socket.js';</span></span></span>
-<span class="cstat-no" title="statement not covered" >import * as tweetRepository from '../data/tweet_data.js';</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >export async function getTweets(req, res) {</span>
-<span class="cstat-no" title="statement not covered" >  const { username, workId } = req.query;</span>
-<span class="cstat-no" title="statement not covered" >  const data = await (username</span>
-<span class="cstat-no" title="statement not covered" >    ? tweetRepository.getAllByUsername(username, workId)</span>
-<span class="cstat-no" title="statement not covered" >    : tweetRepository.getAll(workId));</span>
-<span class="cstat-no" title="statement not covered" >  res.status(200).json(data);</span>
-<span class="cstat-no" title="statement not covered" >}</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >export async function createTweet(req, res) {</span>
-<span class="cstat-no" title="statement not covered" >  const { text } = req.body;</span>
-<span class="cstat-no" title="statement not covered" >  const workId = req.query.workId;</span>
-<span class="cstat-no" title="statement not covered" >  const tweet = await tweetRepository.create(text, req.userId, workId);</span>
-<span class="cstat-no" title="statement not covered" >  res.status(201).json(tweet);</span>
-<span class="cstat-no" title="statement not covered" >  getSocketIO().emit('tweets', tweet);</span>
-<span class="cstat-no" title="statement not covered" >}</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >export async function deleteTweet(req, res) {</span>
-<span class="cstat-no" title="statement not covered" >  const { id } = req.params;</span>
-<span class="cstat-no" title="statement not covered" >  const tweet = await tweetRepository.getById(id);</span>
-<span class="cstat-no" title="statement not covered" >  if (!tweet) {</span>
-<span class="cstat-no" title="statement not covered" >    return res.status(404).json({ message: `Tweet not found: ${id}` });</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
-<span class="cstat-no" title="statement not covered" >  if (tweet.userId !== req.userId) {</span>
-<span class="cstat-no" title="statement not covered" >    return res.sendStatus(403);</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
-<span class="cstat-no" title="statement not covered" >  await tweetRepository.remove(id);</span>
-<span class="cstat-no" title="statement not covered" >  res.sendStatus(204);</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export default class TweetController {
+  constructor(tweetRepository, socketIo) {
+    this.tweetRepository = tweetRepository;
+    this.socketIo = socketIo;
+  }
+&nbsp;
+  getTweets = async (req, res) =&gt; {
+    const { username, workId } = req.query;
+    const data = await (username
+      ? this.tweetRepository.getAllByUsername(username, workId)
+      : this.tweetRepository.getAll(workId));
+    res.status(200).json(data);
+  };
+&nbsp;
+  createTweet = async (req, res) =&gt; {
+    const { text } = req.body;
+    const workId = req.query.workId;
+    const tweet = await this.tweetRepository.create(text, req.userId, workId);
+    res.status(201).json(tweet);
+    this.socketIo().emit('tweets', tweet);
+  };
+&nbsp;
+  deleteTweet = <span class="fstat-no" title="function not covered" >async (req, res) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    const { id } = req.params;</span>
+<span class="cstat-no" title="statement not covered" >    const tweet = await this.tweetRepository.getById(id);</span>
+<span class="cstat-no" title="statement not covered" >    if (!tweet) {</span>
+<span class="cstat-no" title="statement not covered" >      return res.status(404).json({ message: `Tweet not found: ${id}` });</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
+<span class="cstat-no" title="statement not covered" >    if (tweet.userId !== req.userId) {</span>
+<span class="cstat-no" title="statement not covered" >      return res.sendStatus(403);</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
+<span class="cstat-no" title="statement not covered" >    await this.tweetRepository.remove(id);</span>
+<span class="cstat-no" title="statement not covered" >    res.sendStatus(204);</span>
+  };
+}
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -163,7 +175,7 @@
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-01-07T14:32:32.048Z
+                at 2023-01-08T09:43:45.911Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

@@ -9,7 +9,9 @@ import tweetsRouter from './router/tweet_router.js';
 import workRouter from './router/work_router.js';
 import { config } from './config.js';
 import { sequelize } from './db/database.js';
-import { initSocket } from './connection/socket.js';
+import { initSocket, getSocketIO } from './connection/socket.js';
+import TweetController from './controller/tweet_controller.js';
+import * as tweetRepository from './data/tweet_data.js';
 import { csrfCheck } from './middleware/csrf.js';
 import rateLimit from './middleware/rate-limiter.js';
 
@@ -38,7 +40,10 @@ app.use(express.static('public'));
 app.use(csrfCheck);
 app.use(rateLimit);
 app.use('/auth', authRouter);
-app.use('/tweets', tweetsRouter);
+app.use(
+  '/tweets',
+  tweetsRouter(new TweetController(tweetRepository, getSocketIO))
+);
 app.use('/work', workRouter);
 
 app.use((req, res, next) => {

@@ -15,8 +15,9 @@ const validateTweet = [
   validate,
 ];
 
-router.get('/', isAuth, tweetController.getTweets);
-router.post('/', isAuth, validateTweet, tweetController.createTweet);
-router.delete('/:id', isAuth, tweetController.deleteTweet);
-
-export default router;
+export default function tweetRouter(tweetController) {
+  router.get('/', isAuth, tweetController.getTweets);
+  router.post('/', isAuth, validateTweet, tweetController.createTweet);
+  router.delete('/:id', isAuth, tweetController.deleteTweet);
+  return router;
+}
