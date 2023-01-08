@@ -75,7 +75,7 @@ describe('Auth Middleware', () => {
 
   it('passes the request with valid authorizaton and token', async () => {
     const fakeToken = faker.random.alpha(128);
-    const fakeUser = faker.word.noun(1);
+    const fakeId = faker.random.alpha(12);
     const req = httpMocks.createRequest({
       method: 'GET',
       url: '/tweet',
@@ -84,7 +84,7 @@ describe('Auth Middleware', () => {
     const res = httpMocks.createResponse();
     const next = jest.fn();
     jwt.verify = jest.fn((token, secret, callback) => {
-      callback(undefined, { id: fakeUser });
+      callback(undefined, { id: fakeId });
     });
     userRepository.findById = jest.fn((testId) =>
       Promise.resolve({ id: testId })
@@ -92,7 +92,7 @@ describe('Auth Middleware', () => {
 
     await isAuth(req, res, next);
 
-    expect(req).toMatchObject({ userId: fakeUser });
+    expect(req).toMatchObject({ userId: fakeId });
     expect(next).toHaveBeenCalledTimes(1);
   });
 });
