@@ -26,7 +26,7 @@ describe('TweetController', () => {
         { text: faker.word.noun(1) },
         { text: faker.word.noun(1) },
       ];
-      tweetRepository.getAll = (workId) => allTweets;
+      tweetRepository.getAll = () => allTweets;
 
       await tweetController.getTweets(req, res);
 
@@ -53,69 +53,101 @@ describe('TweetController', () => {
   });
 
   describe('createTweet', () => {
-    it('returns 201 and created tweet when text is provided', async () => {
-      const text = faker.word.noun(2);
-      const req = httpMocks.createRequest({
+    let text, userId, workId, req, res;
+    beforeEach(() => {
+      text = faker.word.noun(3);
+      userId = faker.random.alphaNumeric(10);
+      workId = faker.random.alphaNumeric(10);
+      req = httpMocks.createRequest({
         body: { text },
+        query: { workId },
+        userId,
       });
-      const res = httpMocks.createResponse();
-      const createdTweet = [{ text: faker.word.noun(1) }];
-      tweetRepository.create = () => createdTweet;
+      res = httpMocks.createResponse();
+    });
+
+    it('returns 201 and created tweet object including userId and workId', async () => {
+      // mock 함수로 만들어야 호출 여부 등을 테스트할 수 있다
+      tweetRepository.create = jest.fn((text, userId, workId) => ({
+        text,
+        userId,
+        workId,
+      }));
 
       await tweetController.createTweet(req, res);
 
       expect(res.statusCode).toBe(201);
-      expect(res._getJSONData()).toEqual(createdTweet);
-      expect(mockedSocket.emit).toBeCalledTimes(1);
-      //   expect(mockedSocket.emit).toEqual(createdTweet);
+      expect(res._getJSONData()).toEqual({
+        text,
+        userId,
+        workId,
+      });
+      expect(tweetRepository.create).toBeCalledTimes(1);
+      expect(tweetRepository.create).toBeCalledWith(text, userId, workId);
+    });
+
+    it('should send an event to a web socket channel', async () => {
+      tweetRepository.create = jest.fn((text, userId, workId) => ({
+        text,
+        userId,
+        workId,
+      }));
+
+      await tweetController.createTweet(req, res);
+
+      expect(mockedSocket.emit).toHaveBeenCalledWith('tweets', {
+        text,
+        userId,
+        workId,
+      });
     });
   });
 
   describe('deleteTweet', () => {
-    it('returns 404 when id does not exists', async () => {
-      const id = faker.random.alphaNumeric(12);
-      const req = httpMocks.createRequest({
-        params: { id },
+    let tweetId, authorId, req, res;
+    beforeEach(() => {
+      tweetId = faker.random.alphaNumeric(12);
+      authorId = faker.random.alphaNumeric(12);
+      req = httpMocks.createRequest({
+        params: { id: tweetId },
+        userId: authorId,
       });
-      const res = httpMocks.createResponse();
+      res = httpMocks.createResponse();
+    });
+
+    it('returns 404 and should not update the repository if id does not exists', async () => {
       tweetRepository.getById = () => undefined;
+      tweetRepository.remove = jest.fn();
 
       await tweetController.deleteTweet(req, res);
 
       expect(res.statusCode).toBe(404);
-      expect(res._getJSONData().message).toBe(`Tweet not found: ${id}`);
+      expect(res._getJSONData().message).toBe(`Tweet not found: ${tweetId}`);
+      expect(tweetRepository.remove).not.toHaveBeenCalled();
     });
-  });
 
-  it("returns 403 when a user try to delete other's tweet", async () => {
-    const id = faker.random.alphaNumeric(12);
-    const userId = faker.random.alphaNumeric(10);
-    const tweet = [{ userId }];
-    const req = httpMocks.createRequest({
-      params: { id },
-      userId: faker.random.alpha(3),
+    it('returns 403 and should not update the repository if the tweet does not belong to the user', async () => {
+      tweetRepository.getById = () => ({
+        userId: faker.random.alphaNumeric(10),
+      });
+      tweetRepository.remove = jest.fn();
+
+      await tweetController.deleteTweet(req, res);
+
+      expect(res.statusCode).toBe(403);
+      expect(tweetRepository.remove).toBeCalledTimes(0);
     });
-    const res = httpMocks.createResponse();
-    tweetRepository.getById = () => tweet;
 
-    await tweetController.deleteTweet(req, res);
+    it('returns 204 and remove the tweet from the repository if the tweet exists', async () => {
+      tweetRepository.getById = () => ({ userId: authorId });
+      // tweetRepository.remove = jest.fn(() => {});
+      tweetRepository.remove = jest.fn();
 
-    expect(res.statusCode).toBe(403);
-  });
+      await tweetController.deleteTweet(req, res);
 
-  it("returns 204 when a user try to delete the user's tweet", async () => {
-    const id = faker.random.alphaNumeric(12);
-    const tweet = { text: 'welcome' };
-    const req = httpMocks.createRequest({
-      params: { id },
+      expect(res.statusCode).toBe(204);
+      expect(tweetRepository.remove).toBeCalledTimes(1);
+      expect(tweetRepository.remove).toBeCalledWith(tweetId);
     });
-    const res = httpMocks.createResponse();
-    tweetRepository.getById = () => tweet;
-    tweetRepository.remove = jest.fn(() => {});
-
-    await tweetController.deleteTweet(req, res);
-
-    expect(res.statusCode).toBe(204);
-    expect(tweetRepository.remove).toBeCalledTimes(1);
   });
 });
