@@ -15,8 +15,6 @@ import * as tweetRepository from './data/tweet_data.js';
 import { csrfCheck } from './middleware/csrf.js';
 import rateLimit from './middleware/rate-limiter.js';
 
-const app = express();
-
 const corsOption = {
   // 특정 URL만 허용할 경우...
   origin: config.cors.allowedOrigin,
@@ -25,39 +23,55 @@ const corsOption = {
   credentials: true,
 };
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(
-  helmet({
-    crossOriginResourcePolicy: false,
-  })
-);
-app.use(cors(corsOption));
-app.use(morgan('tiny'));
-app.use(express.static('public'));
+export async function startServer() {
+  const app = express();
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: false }));
+  app.use(cookieParser());
+  app.use(
+    helmet({
+      crossOriginResourcePolicy: false,
+    })
+  );
+  app.use(cors(corsOption));
+  app.use(morgan('tiny'));
+  app.use(express.static('public'));
 
-app.use(csrfCheck);
-app.use(rateLimit);
-app.use('/auth', authRouter);
-app.use(
-  '/tweets',
-  tweetsRouter(new TweetController(tweetRepository, getSocketIO))
-);
-app.use('/work', workRouter);
+  app.use(csrfCheck);
+  app.use(rateLimit);
+  app.use('/auth', authRouter);
+  app.use(
+    '/tweets',
+    tweetsRouter(new TweetController(tweetRepository, getSocketIO))
+  );
+  app.use('/work', workRouter);
 
-app.use((req, res, next) => {
-  res.sendStatus(404);
-});
+  app.use((req, res, next) => {
+    res.sendStatus(404);
+  });
 
-app.use((error, req, res, next) => {
-  console.log(error);
-  res.sendStatus(500);
-});
+  app.use((error, req, res, next) => {
+    console.log(error);
+    res.sendStatus(500);
+  });
 
-console.log(config.cors.allowedOrigin);
-sequelize.sync().then(() => {
+  console.log(config.cors.allowedOrigin);
+  await sequelize.sync();
   console.log(`Server is started... ${new Date()}`);
   const server = app.listen(config.host.port);
   initSocket(server);
-});
+  return server;
+}
+
+export async function stopServer(server) {
+  return new Promise((resolve, reject) => {
+    server.close(async () => {
+      try {
+        await sequelize.close();
+        resolve();
+      } catch (error) {
+        reject(error);
+      }
+    });
+  });
+}
