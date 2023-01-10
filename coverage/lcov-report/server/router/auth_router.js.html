@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/41</span>
+                <span class='fraction'>41/41</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/41</span>
+                <span class='fraction'>41/41</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -104,88 +104,88 @@
 <a name='L39'></a><a href='#L39'>39</a>
 <a name='L40'></a><a href='#L40'>40</a>
 <a name='L41'></a><a href='#L41'>41</a>
-<a name='L42'></a><a href='#L42'>42</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >import express from 'express';</span></span></span>
-<span class="cstat-no" title="statement not covered" >import {} from 'express-async-errors';</span>
-<span class="cstat-no" title="statement not covered" >import { body } from 'express-validator';</span>
-<span class="cstat-no" title="statement not covered" >import * as authController from '../controller/auth_controller.js';</span>
-<span class="cstat-no" title="statement not covered" >import { isAuth } from '../middleware/auth_middleware.js';</span>
-<span class="cstat-no" title="statement not covered" >import { validate } from '../middleware/validator.js';</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >const router = express.Router();</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >const validateCredential = [</span>
-<span class="cstat-no" title="statement not covered" >  body('username')</span>
-<span class="cstat-no" title="statement not covered" >    .trim()</span>
-<span class="cstat-no" title="statement not covered" >    .notEmpty()</span>
-<span class="cstat-no" title="statement not covered" >    .isLength({ min: 2 })</span>
-<span class="cstat-no" title="statement not covered" >    .withMessage('username should be at least 2 characters'),</span>
-<span class="cstat-no" title="statement not covered" >  body('password')</span>
-<span class="cstat-no" title="statement not covered" >    .trim()</span>
-<span class="cstat-no" title="statement not covered" >    .isLength({ min: 5 })</span>
-<span class="cstat-no" title="statement not covered" >    .withMessage('password should be at least 5 characters'),</span>
-<span class="cstat-no" title="statement not covered" >  validate,</span>
-<span class="cstat-no" title="statement not covered" >];</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >const validateSignup = [</span>
-<span class="cstat-no" title="statement not covered" >  ...validateCredential,</span>
-<span class="cstat-no" title="statement not covered" >  body('email').trim().isEmail().normalizeEmail().withMessage('invalid email'),</span>
-<span class="cstat-no" title="statement not covered" >  body('url')</span>
-<span class="cstat-no" title="statement not covered" >    .trim()</span>
-<span class="cstat-no" title="statement not covered" >    .isURL()</span>
-<span class="cstat-no" title="statement not covered" >    .withMessage('invalid URL')</span>
-<span class="cstat-no" title="statement not covered" >    .optional({ nullable: true, checkFalsy: true }),</span>
-<span class="cstat-no" title="statement not covered" >  validate,</span>
-<span class="cstat-no" title="statement not covered" >];</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >router.post('/signup', validateSignup, authController.signup);</span>
-<span class="cstat-no" title="statement not covered" >router.post('/login', validateCredential, authController.login);</span>
-<span class="cstat-no" title="statement not covered" >router.post('/logout', authController.logout);</span>
-<span class="cstat-no" title="statement not covered" >router.get('/me', isAuth, authController.me);</span>
-<span class="cstat-no" title="statement not covered" >router.delete('/:id', isAuth, authController.deleteUser);</span>
-<span class="cstat-no" title="statement not covered" >router.get('/csrf-token', authController.csrfToken);</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >export default router;</span>
+<a name='L42'></a><a href='#L42'>42</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import express from 'express';
+import {} from 'express-async-errors';
+import { body } from 'express-validator';
+import * as authController from '../controller/auth_controller.js';
+import { isAuth } from '../middleware/auth_middleware.js';
+import { validate } from '../middleware/validator.js';
+&nbsp;
+const router = express.Router();
+&nbsp;
+const validateCredential = [
+  body('username')
+    .trim()
+    .notEmpty()
+    .isLength({ min: 2 })
+    .withMessage('username should be at least 2 characters'),
+  body('password')
+    .trim()
+    .isLength({ min: 5 })
+    .withMessage('password should be at least 5 characters'),
+  validate,
+];
+&nbsp;
+const validateSignup = [
+  ...validateCredential,
+  body('email').trim().isEmail().normalizeEmail().withMessage('invalid email'),
+  body('url')
+    .trim()
+    .isURL()
+    .withMessage('invalid URL')
+    .optional({ nullable: true, checkFalsy: true }),
+  validate,
+];
+&nbsp;
+router.post('/signup', validateSignup, authController.signup);
+router.post('/login', validateCredential, authController.login);
+router.post('/logout', authController.logout);
+router.get('/me', isAuth, authController.me);
+router.delete('/:id', isAuth, authController.deleteUser);
+router.get('/csrf-token', authController.csrfToken);
+&nbsp;
+export default router;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -193,7 +193,7 @@
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-01-09T05:03:16.001Z
+                at 2023-01-10T14:23:29.728Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

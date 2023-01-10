@@ -13,7 +13,10 @@ export const csrfCheck = (req, res, next) => {
   const csrfHeader = req.get('talktalk-csrf-token');
 
   if (!csrfHeader) {
-    console.warn('Missing required "_csrf-token" header', req.header.origin);
+    console.warn(
+      'Missing required "talktalk-csrf-token" header',
+      req.header.origin
+    );
     return res.status(403).json({ message: 'Failed CSRF check' });
   }
 
@@ -21,7 +24,7 @@ export const csrfCheck = (req, res, next) => {
     .then((valid) => {
       if (!valid) {
         console.warn(
-          'Value provided in "_csrf-token" header does not validate',
+          'Value provided in "talktalk-csrf-token" header does not validate',
           req.header.origin,
           csrfHeader
         );
