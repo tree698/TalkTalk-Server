@@ -5,17 +5,12 @@ import * as userRepository from '../data/auth_data.js';
 const AUTH_ERROR = { message: 'Authentication Error' };
 
 export const isAuth = async (req, res, next) => {
-  // 1. Cookie for Browser
-  // 2. Header for Non-Browser Client
-
   let token;
-  // check the header first
   const authHeader = req.get('Authorization');
   if (authHeader && authHeader.startsWith('Bearer ')) {
     token = authHeader.split(' ')[1];
   }
 
-  // if no token in the header, check the cookie
   if (!token) {
     token = req.cookies['token'];
   }
@@ -33,7 +28,12 @@ export const isAuth = async (req, res, next) => {
       return res.status(401).json(AUTH_ERROR);
     }
     req.userId = user.id;
-    // req.token = token;
+
     next();
   });
 };
+// 1. Cookie for Browser
+// 2. Header for Non-Browser Client
+// check the header first
+// if no token in the header, check the cookie
+// req.token = token;
