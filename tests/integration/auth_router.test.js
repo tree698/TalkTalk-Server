@@ -55,6 +55,53 @@ describe('Auth APIs', () => {
         `${user.username} already exists. Try again!`
       );
     });
+
+    describe.each([
+      {
+        missingFieldName: 'username',
+        expectedMessage: 'username should be at least 2 characters',
+      },
+      {
+        missingFieldName: 'password',
+        expectedMessage: 'password should be at least 5 characters',
+      },
+      {
+        missingFieldName: 'email',
+        expectedMessage: 'invalid email',
+      },
+    ])(
+      'if $missingFieldName is missing',
+      ({ missingFieldName, expectedMessage }) => {
+        it(`returns ${expectedMessage}`, async () => {
+          const user = makeValidUserDetails();
+          delete user[missingFieldName];
+          const res = await request.post('/auth/signup', user, {
+            headers: {
+              'talktalk-csrf-token': csrfToken,
+            },
+          });
+
+          expect(res.status).toBe(400);
+          expect(res.data.message).toBe(expectedMessage);
+        });
+      }
+    );
+
+    it('returns 400 if the length of password is less than 5', async () => {
+      const user = {
+        ...makeValidUserDetails(),
+        password: '123',
+      };
+
+      const res = await request.post('/auth/signup', user, {
+        headers: {
+          'talktalk-csrf-token': csrfToken,
+        },
+      });
+
+      expect(res.status).toBe(400);
+      expect(res.data.message).toBe('password should be at least 5 characters');
+    });
   });
 });
 

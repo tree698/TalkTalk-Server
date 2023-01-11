@@ -11,7 +11,6 @@ const validateCredential = [
   body('username')
     .trim()
     .notEmpty()
-    .isLength({ min: 2 })
     .withMessage('username should be at least 2 characters'),
   body('password')
     .trim()
