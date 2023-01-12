@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">70.12% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>54/77</span>
+                <span class='fraction'>77/77</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">70.12% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>54/77</span>
+                <span class='fraction'>77/77</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -186,37 +186,37 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import SQ from 'sequelize';
 import { sequelize } from '../db/database.js';
 import { User } from './auth_data.js';
@@ -262,38 +262,38 @@ const ORDER_DESC = {
   order: [['createdAt', 'DESC']],
 };
 &nbsp;
-export <span class="fstat-no" title="function not covered" >async function getAll(workId) {</span>
-<span class="cstat-no" title="statement not covered" >  return Tweet.findAll({ ...INCLUDE_USER, ...ORDER_DESC, where: { workId } });</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+export async function getAll(workId) {
+  return Tweet.findAll({ ...INCLUDE_USER, ...ORDER_DESC, where: { workId } });
+}
 &nbsp;
-export <span class="fstat-no" title="function not covered" >async function getAllByUsername(username, workId) {</span>
-<span class="cstat-no" title="statement not covered" >  return Tweet.findAll({</span>
-<span class="cstat-no" title="statement not covered" >    ...INCLUDE_USER,</span>
-<span class="cstat-no" title="statement not covered" >    ...ORDER_DESC,</span>
-<span class="cstat-no" title="statement not covered" >    where: { workId },</span>
-<span class="cstat-no" title="statement not covered" >    include: {</span>
-<span class="cstat-no" title="statement not covered" >      ...INCLUDE_USER.include,</span>
-<span class="cstat-no" title="statement not covered" >      where: { username },</span>
-<span class="cstat-no" title="statement not covered" >    },</span>
-<span class="cstat-no" title="statement not covered" >  });</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+export async function getAllByUsername(username, workId) {
+  return Tweet.findAll({
+    ...INCLUDE_USER,
+    ...ORDER_DESC,
+    where: { workId },
+    include: {
+      ...INCLUDE_USER.include,
+      where: { username },
+    },
+  });
+}
 &nbsp;
-export <span class="fstat-no" title="function not covered" >async function getById(id) {</span>
-<span class="cstat-no" title="statement not covered" >  return Tweet.findOne({</span>
-<span class="cstat-no" title="statement not covered" >    where: { id },</span>
-<span class="cstat-no" title="statement not covered" >    ...INCLUDE_USER,</span>
-<span class="cstat-no" title="statement not covered" >  });</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+export async function getById(id) {
+  return Tweet.findOne({
+    where: { id },
+    ...INCLUDE_USER,
+  });
+}
 &nbsp;
-export <span class="fstat-no" title="function not covered" >async function create(text, userId, workId) {</span>
-<span class="cstat-no" title="statement not covered" >  return Tweet.create({ text, userId, workId }) //</span>
-<span class="cstat-no" title="statement not covered" >    .then((data) =&gt; this.getById(data.dataValues.id));</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+export async function create(text, userId, workId) {
+  return Tweet.create({ text, userId, workId }) //
+    .then((data) =&gt; this.getById(data.dataValues.id));
+}
 &nbsp;
-export <span class="fstat-no" title="function not covered" >async function remove(id) {</span>
-<span class="cstat-no" title="statement not covered" >  return Tweet.findByPk(id) //</span>
-<span class="cstat-no" title="statement not covered" >    .then((tweet) =&gt; tweet.destroy());</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+export async function remove(id) {
+  return Tweet.findByPk(id) //
+    .then((tweet) =&gt; tweet.destroy());
+}
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -301,7 +301,7 @@ export <span class="fstat-no" title="function not covered" >async function remov
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-01-11T10:44:19.353Z
+                at 2023-01-12T10:48:06.138Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
