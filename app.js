@@ -23,7 +23,7 @@ const corsOption = {
   credentials: true,
 };
 
-export async function startServer() {
+export async function startServer(port) {
   const app = express();
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
@@ -58,7 +58,7 @@ export async function startServer() {
   console.log(config.cors.allowedOrigin);
   await sequelize.sync();
   console.log(`Server is started... ${new Date()}`);
-  const server = app.listen(config.host.port);
+  const server = app.listen(port);
   initSocket(server);
   return server;
 }

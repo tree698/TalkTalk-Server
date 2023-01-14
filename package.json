@@ -5,7 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "DOTENV_CONFIG_PATH=./.env.test jest --watchAll --verbose",
+    "test": "DOTENV_CONFIG_PATH=./.env.test jest --watchAll --verbose --globalTeardown=./tests/integration-tests/global-teardown.js",
+    "test:unit": "DOTENV_CONFIG_PATH=./.env.test jest --watchAll --verbose --testPathIgnorePatterns=/tests/integration-tests",
+    "test:integration": "DOTENV_CONFIG_PATH=./.env.test jest --watchAll --verbose --testPathPattern=/tests/integration-tests --globalTeardown=./tests/integration-tests/global-teardown.js",
     "start": "nodemon index"
   },
   "author": "Chanwoo",
@@ -17,7 +19,8 @@
     "axios": "^1.2.2",
     "jest": "^29.3.1",
     "node-mocks-http": "^1.12.1",
-    "nodemon": "^2.0.19"
+    "nodemon": "^2.0.19",
+    "socket.io-client": "^4.5.4"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
