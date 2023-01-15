@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">81.81% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>63/77</span>
+                <span class='fraction'>77/77</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/4</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/4</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">81.81% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>63/77</span>
+                <span class='fraction'>77/77</span>
             </div>
         
             
@@ -186,6 +186,8 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -200,23 +202,21 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import SQ from 'sequelize';
 import { sequelize } from '../db/database.js';
 import { User } from './auth_data.js';
@@ -237,7 +237,7 @@ const Tweet = sequelize.define('tweet', {
   },
   workId: {
     type: DataTypes.INTEGER,
-    allowNu<span class="branch-0 cbranch-no" title="branch not covered" >ll: fa</span>lse,
+    allowNull: false,
   },
 });
 Tweet.belongsTo(User);
@@ -278,22 +278,22 @@ export async function getAllByUsername(username, workId) {
   });
 }
 &nbsp;
-export async function ge<span class="fstat-no" title="function not covered" >tById(id) {</span>
-<span class="cstat-no" title="statement not covered" >  return Tweet.findOne({</span>
-<span class="cstat-no" title="statement not covered" >    where: { id },</span>
-<span class="cstat-no" title="statement not covered" >    ...INCLUDE_USER,</span>
-<span class="cstat-no" title="statement not covered" >  });</span>
-<span class="cstat-no" title="statement not covered" >}</span>
-<span class="cstat-no" title="statement not covered" ></span>
-export async function create(text, userId, workId) <span class="fstat-no" title="function not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >  return Tweet.create({ text, userId, workId }) //</span>
-<span class="cstat-no" title="statement not covered" >    .then((data) =&gt; this.getById(data.dataValues.id));</span>
-<span class="cstat-no" title="statement not covered" >}</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >export async function remove(id) {</span>
-<span class="cstat-no" title="statement not covered" >  return Tweet.findByPk(id) //</span>
-<span class="cstat-no" title="statement not covered" >    .then((tweet) =&gt; tweet.destroy());</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+export async function getById(id) {
+  return Tweet.findOne({
+    where: { id },
+    ...INCLUDE_USER,
+  });
+}
+&nbsp;
+export async function create(text, userId, workId) {
+  return Tweet.create({ text, userId, workId }) //
+    .then((data) =&gt; this.getById(data.dataValues.id));
+}
+&nbsp;
+export async function remove(id) {
+  return Tweet.findByPk(id) //
+    .then((tweet) =&gt; tweet.destroy());
+}
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -301,7 +301,7 @@ export async function create(text, userId, workId) <span class="fstat-no" title=
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-01-14T11:55:05.828Z
+                at 2023-01-15T10:38:52.141Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

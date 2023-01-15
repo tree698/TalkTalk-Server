@@ -9,9 +9,9 @@ dotenv.config({ path: path.resolve(__dirname, '../../.env.test') });
 export default async function teardown() {
   return new Promise(async (resolve) => {
     const connection = await mysql.createConnection({
-      host: process.env['DB_HOST'],
-      user: process.env['DB_USER'],
-      database: process.env['DB_DATABASE'],
+      host: 'localhost',
+      user: 'root',
+      database: 'talktalk-test',
       password: process.env['DB_PASSWORD'],
     });
 

@@ -32,3 +32,17 @@ export function createHeadersWithTokens(csrfToken, token = '') {
     },
   };
 }
+
+export async function postWork(faker, request, csrfToken, loggedInUser) {
+  return await request.post(
+    '/work',
+    {
+      title: faker.word.noun(2),
+      description: faker.word.noun(5),
+      brush: faker.word.noun(2),
+      originalName: faker.word.noun(1),
+      fileName: faker.word.noun(1),
+    },
+    createHeadersWithTokens(csrfToken, loggedInUser.data.token)
+  );
+}
