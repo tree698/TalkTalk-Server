@@ -43,8 +43,14 @@ export async function login(req, res) {
 
   // 브라우저에서만 읽히도록 하기 위해 http-only로 하여 cookie header에 token 전달
   setToken(res, token);
+
+  const userInfo = {
+    id: user.dataValues.id,
+    username: user.dataValues.username,
+    photo: user.dataValues.photo,
+  };
   // 브라우저 이외 다른 client도 사용하도록 body에도 token 전달
-  res.status(200).json({ token, username });
+  res.status(200).json({ token, userInfo });
 }
 
 function createJwtToken(id) {
