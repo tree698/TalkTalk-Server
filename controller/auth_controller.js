@@ -89,15 +89,6 @@ export async function me(req, res) {
   // res.status(200).json({ token: req.token, username: user.username });
 }
 
-export async function getUser(req, res) {
-  const { username } = req.body;
-  const user = await userRepository.findByUsername(username);
-  if (!user) {
-    return res.status(404).json({ message: 'User not found' });
-  }
-  res.status(200).json({ user: user.dataValues });
-}
-
 export async function deleteUser(req, res) {
   const { id } = req.params;
   const user = await userRepository.findById(id);
