@@ -168,10 +168,6 @@ describe('Auth APIs', () => {
 
       expect(res.status).toBe(200);
       expect(res.data.username).toBe(login.data.username);
-      // expect(res.data).toMatchObject({
-      //   username: login.data.username,
-      //   token: login.data.token,
-      // });
     });
   });
 

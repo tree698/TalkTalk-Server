@@ -16,10 +16,8 @@ import { csrfCheck } from './middleware/csrf.js';
 import rateLimit from './middleware/rate-limiter.js';
 
 const corsOption = {
-  // 특정 URL만 허용할 경우...
   origin: config.cors.allowedOrigin,
   optionsSuccessStatus: 200,
-  // allow the Access-Control-Allow-Credentials
   credentials: true,
 };
 

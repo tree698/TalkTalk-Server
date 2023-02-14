@@ -2,12 +2,6 @@ import { faker } from '@faker-js/faker';
 import httpMocks from 'node-mocks-http';
 import TweetController from '../tweet_controller';
 
-// 모듈 전체를 mocking 할 필요가 있는지 생각해 보자
-// import * as tweetRepository from '../../data/tweet_data.js';
-// import { getSocketIO } from '../../connection/socket';
-// jest.mock('../../data/tweet_data.js'); => JS 특징 이용
-// jest.mock('../../connection/socket') => emit 함수만 사용하고 있다
-
 describe('TweetController', () => {
   let tweetRepository;
   let mockedSocket;
@@ -67,7 +61,6 @@ describe('TweetController', () => {
     });
 
     it('returns 201 and created tweet object including userId and workId', async () => {
-      // mock 함수로 만들어야 호출 여부 등을 테스트할 수 있다
       tweetRepository.create = jest.fn((text, userId, workId) => ({
         text,
         userId,
@@ -140,7 +133,6 @@ describe('TweetController', () => {
 
     it('returns 204 and remove the tweet from the repository if the tweet exists', async () => {
       tweetRepository.getById = () => ({ userId: authorId });
-      // tweetRepository.remove = jest.fn(() => {});
       tweetRepository.remove = jest.fn();
 
       await tweetController.deleteTweet(req, res);

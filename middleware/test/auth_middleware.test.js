@@ -1,7 +1,7 @@
 import httpMocks from 'node-mocks-http';
-import { isAuth } from '../auth_middleware';
 import { faker } from '@faker-js/faker';
 import jwt from 'jsonwebtoken';
+import { isAuth } from '../auth_middleware';
 import * as userRepository from '../../data/auth_data.js';
 
 jest.mock('jsonwebtoken');

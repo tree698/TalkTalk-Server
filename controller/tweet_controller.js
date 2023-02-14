@@ -20,7 +20,6 @@ export default class TweetController {
     this.socketIo().emit('tweets', tweet);
   };
 
-  // 사용 안함
   deleteTweet = async (req, res) => {
     const { id } = req.params;
     const tweet = await this.tweetRepository.getById(id);

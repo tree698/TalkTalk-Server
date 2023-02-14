@@ -19,9 +19,6 @@ export async function signup(req, res) {
     email,
     photo,
   });
-  // signup 후 자동 로그인 방지
-  // const token = createJwtToken(userId);
-  // res.status(201).json({ token, username });
   res.status(201).json({ username });
 }
 
@@ -40,8 +37,6 @@ export async function login(req, res) {
       .json({ message: 'Invalid username or password. Try again!' });
   }
   const token = createJwtToken(user.id);
-
-  // 브라우저에서만 읽히도록 하기 위해 http-only로 하여 cookie header에 token 전달
   setToken(res, token);
 
   const userInfo = {
@@ -49,7 +44,6 @@ export async function login(req, res) {
     username: user.dataValues.username,
     photo: user.dataValues.photo,
   };
-  // 브라우저 이외 다른 client도 사용하도록 body에도 token 전달
   res.status(200).json({ token, userInfo });
 }
 
@@ -66,7 +60,7 @@ function setToken(res, token) {
     sameSite: 'none',
     secure: true,
   };
-  res.cookie('token', token, options); // HTTP-ONLY 🍪
+  res.cookie('token', token, options);
 }
 
 export async function logout(req, res, next) {
@@ -86,7 +80,6 @@ export async function me(req, res) {
     photo: user.dataValues.photo,
   };
   res.status(200).json({ token: req.token, userInfo });
-  // res.status(200).json({ token: req.token, username: user.username });
 }
 
 export async function deleteUser(req, res) {
@@ -95,9 +88,6 @@ export async function deleteUser(req, res) {
   if (!user) {
     return res.status(404).json({ message: `Usesr not found: ${id}` });
   }
-  // if (user.userId !== req.userId) {
-  //   return res.sendStatus(403);
-  // }
   await userRepository.remove(id);
   res.sendStatus(204);
 }

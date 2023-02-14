@@ -28,12 +28,7 @@ export const isAuth = async (req, res, next) => {
       return res.status(401).json(AUTH_ERROR);
     }
     req.userId = user.id;
-
+    req.token = token;
     next();
   });
 };
-// 1. Cookie for Browser
-// 2. Header for Non-Browser Client
-// check the header first
-// if no token in the header, check the cookie
-// req.token = token;

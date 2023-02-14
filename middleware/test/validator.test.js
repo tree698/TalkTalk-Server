@@ -1,7 +1,7 @@
 import httpMocks from 'node-mocks-http';
+import { faker } from '@faker-js/faker';
 import { validate } from '../validator.js';
 import * as validator from 'express-validator';
-import { faker } from '@faker-js/faker';
 
 jest.mock('express-validator');
 
