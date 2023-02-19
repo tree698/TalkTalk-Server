@@ -70,15 +70,17 @@
 |6|테스트 코드 작성|테스트 코드 작성|
 
 ## :octocat:&nbsp;&nbsp;레포지토리
-- 프론트엔드&nbsp;:point_right: &nbsp;[TalkTalk-Client](https://github.com/tree698/TalkTalk-Client)
-- 백엔드&nbsp;:point_right: &nbsp;[TalkTalk-Server](https://github.com/tree698/TalkTalk-Server)
+- 프론트엔드 &nbsp;&nbsp;:point_right: &nbsp;&nbsp;[TalkTalk-Client](https://github.com/tree698/TalkTalk-Client)
+- 백엔드 &nbsp;&nbsp;:point_right: &nbsp;&nbsp;[TalkTalk-Server](https://github.com/tree698/TalkTalk-Server)
 
 ## :film_projector:&nbsp;&nbsp;데모 영상 및 배포
+- 데모 영상&nbsp;&nbsp;:point_right: &nbsp;&nbsp; [YouTube](https://www.youtube.com/watch?v=mwA80IG69IE)
+- 배포(Deploy)&nbsp;&nbsp;:point_right: &nbsp;&nbsp; [프론트엔드: Netlify, 백엔드: Heroku](https://talk698.netlify.app/)
 
 ## :desktop_computer:&nbsp;&nbsp;스크린 샷
 |**TalkTalk - 온라인 커뮤니케이션 플랫폼**|
 |:--:|
-|<img width="900" alt="heading2" src="https://user-images.githubusercontent.com/53497516/219075429-aaeb31e5-1c6a-4bfd-b376-0465fb67f06b.jpg">|
+|<img width="700" alt="heading2" src="https://user-images.githubusercontent.com/53497516/219944802-ade6cc41-cec5-4cd8-8a8b-39f96a8a46d3.jpg">|
 
 <div align = left>
 <img width="40" alt="heading2" src="https://user-images.githubusercontent.com/53497516/219231327-87e54a2e-d00b-48bd-83b2-49ccc5b6ffc4.png"> <span>Thanks~</span>
