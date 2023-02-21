@@ -69,13 +69,44 @@
 |5|XSS, CSRF 공격 대비|XSS, CSRF 공격 대비|
 |6|테스트 코드 작성|테스트 코드 작성|
 
-## :octocat:&nbsp;&nbsp;레포지토리
-- 프론트엔드 &nbsp;&nbsp;:point_right: &nbsp;&nbsp;[TalkTalk-Client](https://github.com/tree698/TalkTalk-Client)
-- 백엔드 &nbsp;&nbsp;:point_right: &nbsp;&nbsp;[TalkTalk-Server](https://github.com/tree698/TalkTalk-Server)
+
+## :key:&nbsp;&nbsp; APIs
+### 1) Auth
+|**HTTP 요청 메서드**|**URL**|**설명**|
+|:--:|:--|:--|
+|POST|/auth/signup|회원 가입|
+|POST|/auth/login|로그인|
+|POST|/auth/logout|로그아웃|
+|GET|/auth/me|로그인 상태 확인|
+|GET|/auth/csrf-token|csrf 토큰 제공|
+
+### 2) Tweet
+|**HTTP 요청 메서드**|**URL**|**설명**|
+|:--:|:--|:--|
+|GET|/tweets|모든 트윗(채팅) 가져오기|
+|GET|/tweets?username=:username| 특정 유저에 대한 트윗 가져오기|
+|POST|/tweets|트윗 생성|
+|DELETE|/tweets/:id|특정 id의 트윗 삭제|
+
+### 3) Work
+|**HTTP 요청 메서드**|**URL**|**설명**|
+|:--:|:--|:--|
+|GET|/work|회원의 작품(이미지 파일)과 설명 등을 가져오기|
+|GET|/work/search|검색 결과 가져오기|
+|POST|/work|회원의 작품과 설명 등을 서버에 업로드|
+|POST|/work/image|회원의 작품 업로드 </br> * Heroku에서는 파일 시스템이 제공되지 않아 배포시에는 Cloudinary를 사용하여 업로드 </br>* 기존에는 multer를 사용|
+|DELETE|/work/:id|특정 id의 작품과 설명 등 삭제|
+
 
 ## :film_projector:&nbsp;&nbsp;데모 영상 및 배포
 - 데모 영상&nbsp;&nbsp;:point_right: &nbsp;&nbsp; [YouTube](https://www.youtube.com/watch?v=mwA80IG69IE)
 - 배포(Deploy)&nbsp;&nbsp;:point_right: &nbsp;&nbsp; [프론트엔드: Netlify, 백엔드: Heroku](https://talk698.netlify.app/)
+- 테스트용 &nbsp;&nbsp;:point_right: &nbsp;&nbsp; 아이디: test, 패스워드: 12345
+
+
+## :octocat:&nbsp;&nbsp;레포지토리
+- 프론트엔드 &nbsp;&nbsp;:point_right: &nbsp;&nbsp;[TalkTalk-Client](https://github.com/tree698/TalkTalk-Client)
+- 백엔드 &nbsp;&nbsp;:point_right: &nbsp;&nbsp;[TalkTalk-Server](https://github.com/tree698/TalkTalk-Server)
 
 ## :desktop_computer:&nbsp;&nbsp;스크린 샷
 |**TalkTalk - 온라인 커뮤니케이션 플랫폼**|
