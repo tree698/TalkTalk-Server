@@ -99,7 +99,7 @@
 
 
 ## :film_projector:&nbsp;&nbsp;데모 영상 및 배포
-- 데모 영상&nbsp;&nbsp;:point_right: &nbsp;&nbsp; [YouTube](https://www.youtube.com/watch?v=mwA80IG69IE)
+- 데모 영상&nbsp;&nbsp;:point_right: &nbsp;&nbsp; [YouTube](https://www.youtube.com/watch?v=f7ROFzpLYPs)
 - 배포(Deploy)&nbsp;&nbsp;:point_right: &nbsp;&nbsp; [프론트엔드: Netlify, 백엔드: Heroku](https://talk698.netlify.app/)
 - 테스트용 &nbsp;&nbsp;:point_right: &nbsp;&nbsp; 아이디: test, 패스워드: 12345
 
