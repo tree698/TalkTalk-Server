@@ -114,7 +114,7 @@ describe('Auth APIs', () => {
       );
 
       expect(res.status).toBe(200);
-      expect(res.data.username).toBe(user.username);
+      expect(res.data.userInfo.username).toBe(user.username);
       expect(res.data.token.length).toBeGreaterThan(1);
     });
 
